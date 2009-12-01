@@ -23,7 +23,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # map.connect '/locale/:new_locale', :controller => 'locale', :action => 'set_session_locale'
 
-  map.root :controller => "products", :action => "index"
+  map.root :controller => :taxons, :action => :show, :id => ["categories", "featured-products"]
 
   map.resource :user_session, :member => {:nav_bar => :get}
   map.resource :account, :controller => "users"

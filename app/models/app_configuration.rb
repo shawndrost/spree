@@ -3,8 +3,8 @@ class AppConfiguration < Configuration
   MAIL_AUTH = ['none', 'plain', 'login', 'cram_md5']
   SECURE_CONNECTION_TYPES = ['None','SSL','TLS']
 
-  preference :site_name, :string, :default => 'Spree Demo Site'
-  preference :site_url, :string, :default => 'demo.spreecommerce.com'
+  preference :site_name, :string, :default => 'Aloha Hawaiian Gifts'
+  preference :site_url, :string, :default => 'localhost:3000'
   preference :enable_mail_delivery, :boolean, :default => false
   preference :mail_host, :string, :default => 'localhost'
   preference :mail_domain, :string, :default => 'localhost'
@@ -30,7 +30,7 @@ class AppConfiguration < Configuration
   preference :admin_products_per_page, :integer, :default => 10 
   preference :products_per_page, :integer, :default => 10
   preference :default_tax_category, :string, :default => nil # Use the name (exact case) of the tax category if you wish to specify
-  preference :logo, :string, :default => '/images/admin/bg/spree_50.png'
+  preference :logo, :string, :default => '/images/alohagifts.png'
   preference :stylesheets, :string, :default => 'compiled/screen' # Comma separate multiple stylesheets, e.g. 'compiled/screen,compiled/site'
   preference :admin_interface_logo, :string, :default => "spree/spree.jpg"
   preference :allow_ssl_in_production, :boolean, :default => true

@@ -1,3 +1,5 @@
+<%= render :partial => "shared/welcome" if "/" == request.request_uri %>
+
 <h1><%= @taxon.name %></h1>
 
 <% if @taxon.children.empty? || !params[:keywords].blank? %>

@@ -1,9 +1,19 @@
+<% is_root = ("/" == request.request_uri) %>
+<div id="links" class="sidebar-item">
+	<ul class="navigation-list">
+	<li<%= ' class="current"' if is_root %>><%= link_to "Home", "/", :class => 'root' %></li>
+	<% Page.find(:all).each do |page| %>
+		<li<%= ' class="current"' if @page && @page == page %>><%= link_to page.title, "/"+page.slug, :class => 'root' %></li>
+	<% end %>
+	</ul>
+</div>
+
 <div id="taxonomies" class="sidebar-item">
 <% get_taxonomies.each do |taxonomy| %>
   <ul class="navigation-list">
 	  <li<%= ' class="current"' if @taxon && @taxon == taxonomy.root %>><%= link_to t("shop_by_taxonomy", :taxonomy => taxonomy.name.singularize), seo_url(taxonomy.root), :class => 'root' %></li>
 	  <% taxonomy.root.children.each do |taxon| %>
-	    <li<%= ' class="current"' if @taxon and ([@taxon] + @taxon.ancestors).include?(taxon) %>><%= link_to taxon.name, seo_url(taxon) %></li>
+	    <li<%= ' class="current"' if @taxon and ([@taxon] + @taxon.ancestors).include?(taxon) and !is_root %>><%= link_to taxon.name, seo_url(taxon) %></li>
 	  <% end %>
 	</ul>
 <% end %>

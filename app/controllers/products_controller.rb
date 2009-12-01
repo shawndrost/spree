@@ -31,6 +31,7 @@ class ProductsController < Spree::BaseController
     if referer  && referer.match(HTTP_REFERER_REGEXP)
       @taxon = Taxon.find_by_permalink($1)
     end
+    @taxon = @product.taxons.first rescue nil #hacky, but it'll work
   end
 
   def collection

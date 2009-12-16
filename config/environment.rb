@@ -5,7 +5,7 @@
 # ENV['RAILS_ENV'] ||= 'production'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-SPREE_GEM_VERSION = '0.9.99' unless defined? SPREE_GEM_VERSION
+#SPREE_GEM_VERSION = '0.9.99' unless defined? SPREE_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -33,7 +33,7 @@ Spree::Initializer.run do |config|
   config.gem "tlsmail", :version => '0.0.1'
   config.gem 'activerecord-tableless', :lib => 'tableless', :version => '>=0.1.0'
   config.gem 'haml', :version => '>=2.2.0'
-  config.gem 'compass', :version => '0.8.17', :source => "http://gemcutter.org"
+#  config.gem 'compass', :version => '0.8.17', :source => "http://gemcutter.org"
   config.gem 'calendar_date_select', :version => '1.15'
   config.gem 'rsl-stringex', :lib => 'stringex', :source => "http://gems.github.com"
   config.gem 'chronic' #required for whenever

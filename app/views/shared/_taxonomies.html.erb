@@ -2,7 +2,7 @@
 <div id="links" class="sidebar-item">
 	<ul class="navigation-list">
 	<li<%= ' class="current"' if is_root %>><%= link_to "Home", "/", :class => 'root' %></li>
-	<% Page.find(:all).each do |page| %>
+	<% Page.find_all_by_visible(true).each do |page| %>
 		<li<%= ' class="current"' if @page && @page == page %>><%= link_to page.title, "/"+page.slug, :class => 'root' %></li>
 	<% end %>
 	</ul>

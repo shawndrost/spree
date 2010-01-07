@@ -1,6 +1,7 @@
 class OrdersController < Spree::BaseController     
   prepend_before_filter :reject_unknown_object,  :only => [:show, :edit, :update, :checkout]
   before_filter :prevent_editing_complete_order, :only => [:edit, :update, :checkout]            
+  before_filter :update_coupon, :only => [:update]
 
   ssl_required :show
 
@@ -75,4 +76,20 @@ class OrdersController < Spree::BaseController
     load_object
     redirect_to object_url if @order.checkout_complete
   end         
+  
+  def update_coupon
+  	if params[:couponcodeinform] != ""
+		c = Coupon.find_by_code params[:couponcodeinform]
+		if !c.nil?
+			#remove all coupons
+			@object.coupon_credits = []
+			@object.save
+			#apply this one
+			@object.coupon_credits << c.create_discount(@object)
+			@object.save
+		else
+			flash[:error] = "Coupon not recognized."
+		end
+	end
+  end
 end

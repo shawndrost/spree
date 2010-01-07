@@ -13,6 +13,7 @@ if @body_class.nil?
 end
  %>
 <body class="<%= @body_class %>"<%= %( id="#{@body_id}") if @body_id %>>
+  <div style="position:absolute;z-index:-1;opacity:.4;margin-top:-10px;background:url('/images/whitegradient.png');width:100%;height:200px;"></div>
   <div id="header" class="container" style="width:1170px">                                                          
     <div id="login-bar">          
       <ul id="nav-bar">
@@ -21,7 +22,7 @@ end
     </div>
 	<%= logo %>
   </div>
-  <div id="wrapper" class="container" style="margin-right:240px"> 
+  <div id="wrapper" class="container"> 
     <% if @content_for_sidebar %>
     <div id="sidebar">
       <%= yield :sidebar %>
@@ -40,12 +41,21 @@ end
     </div>
     <%= render :partial => 'shared/footer'%>
   </div>
-  <div style="position:absolute;width:100%;height:100%;top:0px;left:0px;z-index:-1">
-	  <div style="width:200px;padding-left:1000px;margin:0px auto;background:transparent;">
-		<div style="width:150px;background:url('http://localhost:3000/images/rhs_bg.png') no-repeat;margin-top:100px;padding:20px">
-		  hello world!
-		</div>
-	  </div>
+  <div style="width:200px;margin:0px auto;background:transparent;position:absolute;top:100px;left:1050px;">
+	<div style="width:150px;background:url('http://localhost:3000/images/rhs_bg.png') no-repeat;padding:20px">
+	  <h4>Announcements:</h4>
+	  <%= Page.find_by_title("Announcements").body %>
+	  <% if p=Product.find_by_meta_description("deal") %>
+		  <br><br>
+		  <h4>Deal of the Week:</h4>
+		  <ul class="product-listing" style="height:200px;padding-left:0px;margin-left:-18px;margin-top:-20px">
+			  <li id="deal_of_the_week" >
+				<%= link_to small_image(p), p %>
+				<%= link_to p.name + "<span class='price selling' style='color:red'>#{product_price(p)} for a limited time!</span>", p, :class => 'info' %>
+			  </li>
+		  </ul>
+	  <% end %>
+	</div>
   </div>
 </body>
 </html>

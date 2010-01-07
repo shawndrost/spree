@@ -1,3 +1,27 @@
+<div>
+	<h1><%= t("checkout")%></h1>
+	<br>
+	<div style="float:left;width:300px;">
+		<table style="margin: 0px auto;width:200px">
+			<tr><td colspan=2 style="text-align:center">
+				<h3>Your Order</h3>
+			</td></tr>
+			<tr><td><h3><%= "#{t("subtotal")}: " %></h3></td><td><h3><%= "#{order_price(@order)}" %></h3></td></tr>
+			<tr><td><h3><%= "Coupon&nbsp;Code: " %></h3></td><td><h3><%= @order.coupon_credits.empty? ? "None." : "#{@order.coupon_credits[0].adjustment_source.code}" %></h3></td></tr>
+			<tr><td><h3><%= "#{t("total")}: " %></h3></td><td><h3><%= "#{number_to_currency(@order.total)}" %></h3></td></tr>
+			<tr><td colspan=2 style="text-align:center">
+				<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=sdrost%40gmail.com&amount=<%="#{number_to_currency(@checkout.order.total)}"%>&currency_code=USD&item_name=Your%20Order&return=http%3A%2F%2Fshawndrost.com">
+					<img src="https://www.paypal.com/en_US/i/btn/btn_paynowCC_LG.gif">
+				</a>
+			</td></tr>
+		</table>
+	</div>
+	<div style="float:right;width:460px;border:1px dotted grey;padding:5px">
+		For your security, Aloha Hawaiian Gifts uses Paypal to handle payments.  If you don't have a Paypal account, you can pay using a credit card by clicking the highlighted link on the next page.
+		<%= image_tag 'paypal_screenshot.png', {:style => "border:2px solid grey;margin:10px 0px 0px 3px", :width => "450px"} %>
+	</div>
+</div>
+<!--
 <% content_for :head do %>
   <%= javascript_include_tag 'checkout', '/states' %>
 <% end %>
@@ -10,4 +34,5 @@
 </div>
 <div id="checkout-summary">
   <%= render 'summary' %>
-</div>  
+</div>
+-->

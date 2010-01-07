@@ -20,7 +20,7 @@ module Spree::BaseHelper
     unless order.nil?
       item_count = order.line_items.inject(0) { |kount, line_item| kount + line_item.quantity }
       return "" if current_page?(path)
-      text = "#{text}: (#{item_count}) #{order_price(order)}"
+      text = "#{text}: (#{item_count}) #{number_to_currency order.total}"
       css_class = 'full' if item_count > 0
     end
     link_to text, path, :class => css_class
@@ -110,7 +110,7 @@ module Spree::BaseHelper
   end
 
   def stylesheet_tags(paths=stylesheet_paths)
-    output = ''
+    output = stylesheet_link_tag("static")
     if !paths.blank?
       paths.each do |path|
         output << stylesheet_link_tag(path)

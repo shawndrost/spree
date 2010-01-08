@@ -10,7 +10,7 @@
 			<tr><td><h3><%= "Coupon&nbsp;Code: " %></h3></td><td><h3><%= @order.coupon_credits.empty? ? "None." : "#{@order.coupon_credits[0].adjustment_source.code}" %></h3></td></tr>
 			<tr><td><h3><%= "#{t("total")}: " %></h3></td><td><h3><%= "#{number_to_currency(@order.total)}" %></h3></td></tr>
 			<tr><td colspan=2 style="text-align:center">
-				<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=sdrost%40gmail.com&amount=<%="#{number_to_currency(@checkout.order.total)}"%>&currency_code=USD&item_name=Your%20Order&return=http%3A%2F%2Fshawndrost.com">
+				<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=Roger%40rogerjansen.com&amount=<%="#{number_to_currency(@checkout.order.total)}"%>&currency_code=USD&item_name=Your%20Order&return=http%3A%2F%2Fshawndrost.com">
 					<img src="https://www.paypal.com/en_US/i/btn/btn_paynowCC_LG.gif">
 				</a>
 			</td></tr>

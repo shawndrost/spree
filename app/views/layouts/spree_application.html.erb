@@ -42,7 +42,7 @@ end
     <%= render :partial => 'shared/footer'%>
   </div>
   <div style="width:200px;margin:0px auto;position:absolute;top:90px;left:1050px;">
-	<div style="width:150px;background:url('http://localhost:3000/images/rhs_bg.png') no-repeat;padding:20px">
+	<div style="width:150px;background:url('/images/rhs_bg.png') no-repeat;padding:20px">
 	  <h4>Announcements:</h4>
 	  <%= Page.find_by_title("Announcements").body %>
 	  <% if p=Product.find_by_meta_description("deal") %>

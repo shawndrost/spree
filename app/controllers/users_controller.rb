@@ -5,7 +5,7 @@ class UsersController < Spree::BaseController
   before_filter :require_user, :only => [:show, :edit, :update]
   before_filter :initialize_extension_partials
 
-  ssl_required :new, :create, :edit, :update, :show
+#  ssl_required :new, :create, :edit, :update, :show
   
   actions :all, :except => [:index, :destroy]
 	

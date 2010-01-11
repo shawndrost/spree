@@ -3,7 +3,7 @@ class OrdersController < Spree::BaseController
   before_filter :prevent_editing_complete_order, :only => [:edit, :update, :checkout]            
   before_filter :update_coupon, :only => [:update]
 
-  ssl_required :show
+#  ssl_required :show
 
   resource_controller
   actions :all, :except => :index

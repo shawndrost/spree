@@ -3,7 +3,7 @@ class AppConfiguration < Configuration
   MAIL_AUTH = ['none', 'plain', 'login', 'cram_md5']
   SECURE_CONNECTION_TYPES = ['None','SSL','TLS']
 
-  preference :site_name, :string, :default => 'Aloha Hawaiian Gifts'
+  preference :site_name, :string, :default => 'Aloha Hawaii Gifts'
   preference :site_url, :string, :default => 'localhost:3000'
   preference :enable_mail_delivery, :boolean, :default => false
   preference :mail_host, :string, :default => 'localhost'

@@ -1,13 +1,16 @@
-<object type="application/x-shockwave-flash" data="http://widget-0f.slide.com/widgets/slideticker.swf" height="200" width="270" align="right" style="width:270px;height:200px;margin-left:20px;">
-<param name="movie" value="http://widget-0f.slide.com/widgets/slideticker.swf" />
-<param name="quality" value="high" />
-<param name="scale" value="noscale" />
-<param name="salign" value="l" />
-<param name="wmode" value="transparent"/>
-<param name="flashvars" value="cy=ms&il=1&channel=3314649325783755535&site=widget-0f.slide.com"/>
-</object>
-<h1>Welcome to Aloha Hawaiian Gifts!</h1>
-<div>
-<%= Page.find_by_title("Welcome text").body %>
+<div style="position:absolute;margin-left:480px;width:270px">
+	<object type="application/x-shockwave-flash" data="http://widget-0f.slide.com/widgets/slideticker.swf" height="200" width="270" align="right" style="width:270px;height:200px;margin-left:20px;">
+	<param name="movie" value="http://widget-0f.slide.com/widgets/slideticker.swf" />
+	<param name="quality" value="high" />
+	<param name="scale" value="noscale" />
+	<param name="salign" value="l" />
+	<param name="wmode" value="transparent"/>
+	<param name="flashvars" value="cy=ms&il=1&channel=3314649325783755535&site=widget-0f.slide.com"/>
+	</object>
 </div>
-<br clear="all">
+<div style="width:470px">
+	<h1>Welcome to Aloha Hawaiian Gifts!</h1>
+	<div>
+	<%= Page.find_by_title("Welcome text").body %>
+	</div>
+</div>

@@ -33,12 +33,15 @@
     </div>
   <% end%>
   <% if @product.has_stock? || Spree::Config[:allow_backorders] %>
+    <table><tr><td>
     <%= text_field_tag (@product.has_variants? ? :quantity : "variants[#{@product.master.id}]"),
       1, :class => "title", :size => 3 %>
     &nbsp;
+    </td><td>
     <button type='submit' class='large primary'>
       <%= image_tag('/images/add-to-cart.png') + t('add_to_cart') %>
     </button>
+    </td></tr></table>
   <% else %>
     <%= content_tag('strong', t('out_of_stock')) %>
   <% end %>

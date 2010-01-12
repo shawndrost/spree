@@ -3,24 +3,27 @@
 <h1><%= t("shopping_cart")%></h1>
 
 <% form_for(@order, :url => object_url, :html => { :method => :put, :id => 'updatecart' }) do |order_form| %>
-  <%= render :partial => 'form', :locals => {:order_form => order_form} %>
-  <% unless @order.line_items.empty? -%>
-  <div id="subtotal">
-    <table>
-    <tr><td><h3><%= "#{t("subtotal")}: " %></h3></td><td><h3><%= "#{order_price(@order)}" %></h3></td></tr>
-    <tr><td><h3><%= "Coupon Code: " %></h3></td><td><h3><input id="couponcode" type="text" value="<%= @order.coupon_credits.empty? ? "" : "#{@order.coupon_credits[0].adjustment_source.code}" %>"></input></h3></td></tr>
-    <tr><td><h3><%= "#{t("total")}: " %></h3></td><td><h3><%= "#{number_to_currency(@order.total)}" %></h3></td></tr>
-    </table>
-    <div class="links">
-      <%= link_to image_tag('/images/update.png') + t("update"), '#', :class => 'button checkout primary', :onclick => "$('#couponcodeinform').val($('#couponcode').val());$('form#updatecart').submit(); return false;" %>
-      <%= link_to image_tag('/images/checkout.png') + t("checkout"), edit_order_checkout_url(@order), :class => 'button checkout primary' %>
-    </div>
-  </div>
-  <% end -%>
-  <p><%=link_to t("continue_shopping"), products_path, :class => 'button continue' %></p>
-  <% unless @order.line_items.empty? -%>
-  <p id="clear_cart_link">
-    <%= link_to t("empty_cart"), object_url, :method => :delete, :class => 'button empty'  %>
-  </p>
-  <% end -%>
+	<%= render :partial => 'form', :locals => {:order_form => order_form} %>
+		<table style="border-collapse:collapse;width:100%"><tr><td>
+			<p><%=link_to t("continue_shopping"), products_path, :class => 'button continue' %></p>
+			<% unless @order.line_items.empty? -%>
+			<p id="clear_cart_link">
+				<%= link_to t("empty_cart"), object_url, :method => :delete, :class => 'button empty'	%>
+			</p>
+			<% end -%>
+		</td><td width="300">
+			<% unless @order.line_items.empty? -%>
+				<div id="subtotal">
+					<table>
+					<tr><td><h3><%= "#{t("subtotal")}: " %></h3></td><td><h3><%= "#{order_price(@order)}" %></h3></td></tr>
+					<tr><td><h3><%= "Coupon Code: " %></h3></td><td><h3><input id="couponcode" type="text" value="<%= @order.coupon_credits.empty? ? "" : "#{@order.coupon_credits[0].adjustment_source.code}" %>"></input></h3></td></tr>
+					<tr><td><h3><%= "#{t("total")}: " %></h3></td><td><h3><%= "#{number_to_currency(@order.total)}" %></h3></td></tr>
+					</table>
+					<div class="links">
+						<%= link_to image_tag('/images/update.png') + t("update"), '#', :class => 'button checkout primary', :onclick => "$('#couponcodeinform').val($('#couponcode').val());$('form#updatecart').submit(); return false;" %>
+						<%= link_to image_tag('/images/checkout.png') + t("checkout"), edit_order_checkout_url(@order), :class => 'button checkout primary' %>
+					</div>
+				</div>
+			<% end -%>
+		</td></tr></table>
 <% end -%>

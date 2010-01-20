@@ -6,7 +6,7 @@ class Admin::OverviewController < Admin::BaseController
   def import
   	upload = params[:upload]
     name =  upload['datafile'].original_filename
-    directory = "tmp/upload/"
+    directory = "#{RAILS_ROOT}/tmp/upload/"
     @results = "" #%x[rm #{directory}*.csv]
     path = File.join(directory, name)
     @post = File.open(path, "wb") { |f| f.write(upload['datafile'].read) }

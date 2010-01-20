@@ -89,7 +89,7 @@ namespace :spree do
 				if i 
 					puts "image name identical, no changes: #{i.attachment_file_name}"
 				elsif ENV['hasImages'] == "true"
-					img_path = RAILS_ROOT+"/"+img_dir + image_name
+					img_path = img_dir + image_name
 					puts "adding #{img_path}"
 					begin
 						i = Image.new

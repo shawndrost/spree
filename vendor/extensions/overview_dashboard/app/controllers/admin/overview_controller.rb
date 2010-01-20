@@ -16,8 +16,8 @@ class Admin::OverviewController < Admin::BaseController
 		@results += "ls #{directory}*.csv\n"
 		name = %x[ls #{directory}*.csv].strip.scan(/[^\/]*$/)[0]
     end
-    @results += "rake spree:import_products file='#{name}' path='#{directory}' hasImages='#{isZip}'"
-    @results += %x[rake spree:import_products file="#{name}" path="#{directory}" hasImages=#{isZip}]
+    @results += "rake spree:import_products file='#{name}' path='#{directory}' hasImages='#{isZip}' RAILS_ENV=#{Rails.env}"
+    @results += %x[rake spree:import_products file="#{name}" path="#{directory}" hasImages=#{isZip} RAILS_ENV=#{Rails.env}]
     @results.gsub!("\n", "<br>")
     render :action => :index
   end

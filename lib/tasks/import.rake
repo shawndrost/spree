@@ -89,14 +89,18 @@ namespace :spree do
 				if i 
 					puts "image name identical, no changes: #{i.attachment_file_name}"
 				elsif ENV['hasImages'] == "true"
-					puts "adding #{image_name}"
+					img_path = RAILS_ROOT+"/"+img_dir + image_name
+					puts "adding #{img_path}"
 					begin
 						i = Image.new
-						File.open(img_dir + image_name){|f| i.attachment = f}
+						File.open(img_path){|f| 
+							puts "adding attachment..."
+							i.attachment = f
+						}
 						i.save
 						product.images << i
 					rescue
-						puts "***WARNING: image titled #{image_name} not found in uploaded file(s)."
+						puts "***WARNING: image titled #{img_path} not found in uploaded file(s): "+$!
 					end
 				elsif !i.nil?
 					puts "***WARNING: image titled #{image_name} not found in uploaded file(s)."

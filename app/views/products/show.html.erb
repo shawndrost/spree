@@ -4,7 +4,7 @@
 if @product.images.empty?
       @lightbox_image = "/images/noimage/product.jpg"
 else
-      @lightbox_image = @product.images.first.attachment.url(:original)  
+      @lightbox_image = @product.images.first.attachment.url(:large)  
 end
 %>
 <script type="text/javascript">

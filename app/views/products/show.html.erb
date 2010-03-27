@@ -1,10 +1,23 @@
 <% @body_id = 'product-details' %>
 <h1><%= @product.name %></h1>
+<%
+if @product.images.empty?
+      @lightbox_image = "/images/noimage/product.jpg"
+else
+      @lightbox_image = @product.images.first.attachment.url(:original)  
+end
+%>
+<script type="text/javascript">
+$(function() {
+	$('#main-image a').lightBox(); // Select all links in object with gallery ID
+});
+</script>
 
 <div id="product-images">
   <div id="main-image">
-    <%= render 'image' -%>
+    <a href="<%=@lightbox_image%>"><%= render 'image' -%></a>
   </div>
+    (Click to enlarge image.)
   <div id="thumbnails">
     <%= render 'thumbnails', :product => @product -%>
   </div>
